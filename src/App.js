@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <div className="top-nav">
         <h1>Music Player</h1>
-        <audio ref={audioRef} src="../public/song/memory_reboot_-_vøj,_narvent_[edit_audio](256k).mp3"></audio>
+        <audio ref={audioRef} src="/memory_reboot_-_vøj,_narvent_[edit_audio](256k).mp3"></audio>
         <button onClick={handlePlayPause}>
           {isPlaying ? "Pause" : "Play"}
         </button>
