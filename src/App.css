@@ -1,7 +1,39 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  width: 100vw;
+  height: 100vh;
+  /* gap: 10px; */
+  background-color: black;
+  color: white;
 }
 
+.music-list {
+  background-color: #1f1f1f;
+  border-radius: 20px;
+  margin: 5px;
+  padding: 10px;
+}
+
+.current-playing {
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* border-left: solid 5px white; */
+  background-color: #1f1f1f;
+  border-radius: 20px;
+  margin: 5px;
+}
+
+#input-music {
+  display: none;
+}
 
 
 
