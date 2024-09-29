@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useRef, useState } from "react";
+import jsmediatags from 'jsmediatags';
 
 function App() {
   const audioRef = useRef(null);
@@ -7,6 +8,11 @@ function App() {
 
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+
+  const [audioName, setAudioName] = useState('');
+  const [artist, setArtist] = useState('');
+  const [album, setAlbum] = useState('');
+  const [coverArt, setCoverArt] = useState(null);
 
   const handleTimeUpdate = ()=>{
     setCurrentTime(audioRef.current.currentTime);
@@ -29,9 +35,35 @@ function App() {
     const file = e.target.files[0];
     if(file){
       const fileURL = URL.createObjectURL(file);
-      audioRef.current.src = fileURL;
+
+      jsmediatags.read(file, {
+        onSuccess: (tag) => {
+          const { title, artist, album, picture } = tag.tags;
+          setArtist(artist || 'Unknown Artist');
+          setAlbum(album || 'Unknown Album');
+
+          // Extract album art if available
+          if (picture) {
+            const base64String = arrayBufferToBase64(picture.data);
+            const imageSrc = `data:${picture.format};base64,${base64String}`;
+            setCoverArt(imageSrc);
+          }
+        },
+        onError: (error) => {
+          console.log(error);
+        },
+      });
     }
-  }
+    }
+
+  const arrayBufferToBase64 = (buffer) => {
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+    for (let i = 0; i < bytes.byteLength; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+  };
 
   return (
     <div className="App">
@@ -55,6 +87,16 @@ function App() {
         <button onClick={handlePlayPause}>
           {isPlaying ? "Pause" : "Play"}
         </button>
+
+        {/* Display the audio file name */}
+      {audioName && <p>Audio Name: {audioName}</p>}
+      
+      {/* Display artist and album info */}
+      {artist && <p>Artist: {artist}</p>}
+      {album && <p>Album: {album}</p>}
+
+      {/* Display album art if available */}
+      {coverArt && <img src={coverArt} alt="Album Art" />}
 
       </div>
     </div>
