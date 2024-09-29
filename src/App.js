@@ -79,11 +79,15 @@ function App() {
       
       <div className="current-playing">
         <h1>Music Player</h1>
+<<<<<<< HEAD
 
         <audio ref={audioRef} src="/memory_reboot_-_vøj,_narvent_[edit_audio](256k).mp3" onTimeUpdate={handleTimeUpdate} onLoadedMetadata={handleLoadedMetaData}></audio>
 
         <input type='range' min="0" max={duration} value={currentTime} onChange={(e)=> (audioRef.current.currentTime = e.target.value)}></input>
 
+=======
+        <audio ref={audioRef} src="../public/song/memory_reboot_-_vøj,_narvent_[edit_audio](256k).mp3"></audio>
+>>>>>>> parent of 1181bb5 (Song play error solved)
         <button onClick={handlePlayPause}>
           {isPlaying ? "Pause" : "Play"}
         </button>
