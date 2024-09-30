@@ -5,6 +5,7 @@
   /* align-items: center; */
   display: grid;
   grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto 3fr;
   width: 100vw;
   height: 100vh;
   /* gap: 10px; */
@@ -12,7 +13,7 @@
   color: white;
 }
 
-.music-list {
+.music-content-heading {
   background-color: #1f1f1f;
   border-radius: 20px;
   margin: 5px;
@@ -22,19 +23,60 @@
 .current-playing {
   /* text-align: center; */
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   /* border-left: solid 5px white; */
   background-color: #1f1f1f;
   border-radius: 20px;
   margin: 5px;
+  grid-column: 2/3;
+  grid-row: 1/3;
+}
+
+.current-playing-elements {
+  background-color: #2f2f2f;
+  height: 80%;
+  width: 40%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.music-list {
+  background-color: #1f1f1f;
+  border-radius: 20px;
+  margin: 5px;
+  padding: 10px;
+}
+
+.music-list-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.input-button {
+  border: none;
+  text-decoration: none;
+  background: transparent;
+  color: white;
+  font-size: 30px;
+  border: solid 2px white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
 }
 
 #input-music {
   display: none;
 }
 
+#duration-slider {
+  width: 80%;
+  accent-color: white;
+}
 
 
 
