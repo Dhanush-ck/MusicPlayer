@@ -35,29 +35,33 @@ function App() {
 
   return (
     <div className="App">
-      <div className='music-list'>
+      <div className='music-content-heading'>
         <h2>List</h2>
-
-        <button>
-        <label htmlFor="input-music">
-          Add
-        </label>
-
-        </button>
-        <input type='file' accept='audio/*' id="input-music" onChange={handleMusicInput}></input>
       </div>
       
       <div className="current-playing">
-        <h1>Music Player</h1>
-        <h3></h3>
-        <audio ref={audioRef} src="/memory_reboot_-_vøj,_narvent_[edit_audio](256k).mp3" onTimeUpdate={handleTimeUpdate} onLoadedMetadata={handleLoadedMetaData}></audio>
+        <div className='current-playing-elements'>
+          <h1>Music Player</h1>
+          <h3></h3>
+          <audio ref={audioRef} src="/songs/memory_reboot_-_vøj,_narvent_[edit_audio](256k).mp3" onTimeUpdate={handleTimeUpdate} onLoadedMetadata={handleLoadedMetaData}></audio>
 
-        <input type='range' min="0" max={duration} value={currentTime} onChange={(e)=> (audioRef.current.currentTime = e.target.value)}></input>
+          <input type='range' id='duration-slider' min="0" max={duration} value={currentTime} onChange={(e)=> (audioRef.current.currentTime = e.target.value)}></input>
 
-        <button onClick={handlePlayPause}>
-          {isPlaying ? "Pause" : "Play"}
-        </button>
+          <button onClick={handlePlayPause}>
+            {isPlaying ? "Pause" : "Play"}
+          </button>
+        </div>
+      </div>
 
+      <div className='music-list'>
+        <div className='music-list-buttons'>
+          <button className='input-button'>
+            <label htmlFor="input-music">
+                +
+            </label>
+          </button>
+          <input type='file' accept='audio/*' id="input-music" onChange={handleMusicInput}></input>
+        </div>
       </div>
     </div>
   );
