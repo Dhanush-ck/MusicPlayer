@@ -16,6 +16,8 @@ function App() {
     setDuration(audioRef.current.duration);
   }
 
+  // const imageList = document.getElementsByClassName('image-list');
+
   const handlePlayPause = () => {
     if (isPlaying) {
       audioRef.current.pause();
@@ -31,7 +33,21 @@ function App() {
       const fileURL = URL.createObjectURL(file);
       audioRef.current.src = fileURL;
     }
+    addDiv();
   }
+
+  const [divs, setDivs] = useState([]);
+
+  const addDiv = () => {
+    const newDiv = (
+      <div className='songs'>
+          <h4>Memory Reboot</h4>
+          <button>Like</button>
+          <button>Remove</button>
+        </div>
+    );
+    setDivs((prevDivs) => [...prevDivs, newDiv]);
+  };
 
   return (
     <div className="App">
@@ -62,6 +78,12 @@ function App() {
           </button>
           <input type='file' accept='audio/*' id="input-music" onChange={handleMusicInput}></input>
         </div>
+        <div className='songs'>
+          <h4>Memory Reboot</h4>
+          <button>Like</button>
+          <button>Remove</button>
+        </div>
+        {divs.map((div) => div)}
       </div>
     </div>
   );
