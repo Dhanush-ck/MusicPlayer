@@ -69,6 +69,14 @@
   gap: 10px;
 }
 
+.songs img {
+  height: 25px;
+}
+
+#heart-fill {
+  display: none;
+}
+
 .input-button {
   border: none;
   text-decoration: none;
