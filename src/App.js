@@ -49,6 +49,19 @@ function App() {
     setDivs((prevDivs) => [...prevDivs, newDiv]);
   };
 
+  const heart = document.getElementById('heart');
+  const heartFill = document.getElementById('heart-fill');
+
+  const heartHide = ()=>{
+    heart.style.display = 'none';
+    heartFill.style.display = 'block';
+  }
+
+  const heartFillHide = ()=>{
+    heartFill.style.display = 'none';
+    heart.style.display = 'block';
+  }
+
   return (
     <div className="App">
       <div className='music-content-heading'>
@@ -58,7 +71,7 @@ function App() {
       <div className="current-playing">
         <div className='current-playing-elements'>
           <h1>Music Player</h1>
-          <h3></h3>
+
           <audio ref={audioRef} src="/songs/memory_reboot_-_vøj,_narvent_[edit_audio](256k).mp3" onTimeUpdate={handleTimeUpdate} onLoadedMetadata={handleLoadedMetaData}></audio>
 
           <input type='range' id='duration-slider' min="0" max={duration} value={currentTime} onChange={(e)=> (audioRef.current.currentTime = e.target.value)}></input>
@@ -80,7 +93,8 @@ function App() {
         </div>
         <div className='songs'>
           <h4>Memory Reboot</h4>
-          <button>Like</button>
+          <img src='/img/heart.png' alt='heart' id='heart' onClick={heartHide}></img>
+          <img src='/img/heart_fill.png' alt='heart-filled' id='heart-fill' onClick={heartFillHide}></img>
           <button>Remove</button>
         </div>
         {divs.map((div) => div)}
