@@ -36,13 +36,21 @@ function App() {
     addDiv();
   }
 
+  const initialSrc = '/img/heart.png';
+  const filledSrc = '/img/heart_fill.png';
+  const [src, setSrc] = useState(initialSrc);
+  const heartHide = (e)=>{
+    setSrc((prevSrc)=>(prevSrc===initialSrc? filledSrc:initialSrc));
+  }
+
   const [divs, setDivs] = useState([]);
 
   const addDiv = () => {
     const newDiv = (
       <div className='songs'>
           <h4>Memory Reboot</h4>
-          <button>Like</button>
+          <img src={src} alt='heart' id='heart' onClick={heartHide}></img>
+          {/* <img src='/img/heart_fill.png' alt='heart-filled' id='heart-fill' onClick={heartFillHide}></img> */}
           <button>Remove</button>
         </div>
     );
@@ -52,15 +60,15 @@ function App() {
   const heart = document.getElementById('heart');
   const heartFill = document.getElementById('heart-fill');
 
-  const heartHide = ()=>{
-    heart.style.display = 'none';
-    heartFill.style.display = 'block';
-  }
+  // const heartHide = ()=>{
+  //   heart.style.display = 'none';
+  //   heartFill.style.display = 'block';
+  // }
 
-  const heartFillHide = ()=>{
-    heartFill.style.display = 'none';
-    heart.style.display = 'block';
-  }
+  // const heartFillHide = ()=>{
+  //   heartFill.style.display = 'none';
+  //   heart.style.display = 'block';
+  // }
 
   return (
     <div className="App">
@@ -93,8 +101,8 @@ function App() {
         </div>
         <div className='songs'>
           <h4>Memory Reboot</h4>
-          <img src='/img/heart.png' alt='heart' id='heart' onClick={heartHide}></img>
-          <img src='/img/heart_fill.png' alt='heart-filled' id='heart-fill' onClick={heartFillHide}></img>
+          <img src={src} alt='heart' id='heart' onClick={heartHide}></img>
+          {/* <img src='/img/heart_fill.png' alt='heart-filled' id='heart-fill' onClick={heartFillHide}></img> */}
           <button>Remove</button>
         </div>
         {divs.map((div) => div)}
