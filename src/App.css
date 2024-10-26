@@ -46,10 +46,29 @@
 
 .music-list {
   background-color: #1f1f1f;
-  border-radius: 20px;
+  border-radius: 20px 10px 10px 20px;
   margin: 5px;
   padding: 10px;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
+}
+
+.music-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.music-list::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+  border: 2px solid transparent;
+}
+
+.music-list::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.music-list::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 10px;
 }
 
 .music-list-buttons {
