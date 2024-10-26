@@ -39,8 +39,16 @@ function App() {
   const initialSrc = '/img/heart.png';
   const filledSrc = '/img/heart_fill.png';
   const [src, setSrc] = useState(initialSrc);
-  const heartHide = (e)=>{
-    setSrc((prevSrc)=>(prevSrc===initialSrc? filledSrc:initialSrc));
+  const HeartHide = (e)=>{
+    // src = e;
+    // const [src, setSrc] = useState(initialSrc);
+    setSrc((prevSrc)=>(prevSrc==initialSrc? filledSrc:initialSrc));
+    // if(e.src == initialSrc){
+    //   e.src = filledSrc;
+    // }
+    // else{
+    //   e.src = initialSrc;
+    // }
   }
 
   const [divs, setDivs] = useState([]);
@@ -49,7 +57,7 @@ function App() {
     const newDiv = (
       <div className='songs'>
           <h4>Memory Reboot</h4>
-          <img src={src} alt='heart' id='heart' onClick={heartHide}></img>
+          <img src={src} alt='heart' id='heart' onClick={HeartHide}></img>
           {/* <img src='/img/heart_fill.png' alt='heart-filled' id='heart-fill' onClick={heartFillHide}></img> */}
           <button>Remove</button>
         </div>
@@ -101,7 +109,7 @@ function App() {
         </div>
         <div className='songs'>
           <h4>Memory Reboot</h4>
-          <img src={src} alt='heart' id='heart' onClick={heartHide}></img>
+          <img src={src} alt='heart' id='heart' onClick={HeartHide}></img>
           {/* <img src='/img/heart_fill.png' alt='heart-filled' id='heart-fill' onClick={heartFillHide}></img> */}
           <button>Remove</button>
         </div>
