@@ -57,26 +57,11 @@ function App() {
     const newDiv = (
       <div className='songs'>
           <h4>Memory Reboot</h4>
-          <img src={src} alt='heart' id='heart' onClick={HeartHide}></img>
-          {/* <img src='/img/heart_fill.png' alt='heart-filled' id='heart-fill' onClick={heartFillHide}></img> */}
           <button>Remove</button>
         </div>
     );
     setDivs((prevDivs) => [...prevDivs, newDiv]);
   };
-
-  const heart = document.getElementById('heart');
-  const heartFill = document.getElementById('heart-fill');
-
-  // const heartHide = ()=>{
-  //   heart.style.display = 'none';
-  //   heartFill.style.display = 'block';
-  // }
-
-  // const heartFillHide = ()=>{
-  //   heartFill.style.display = 'none';
-  //   heart.style.display = 'block';
-  // }
 
   return (
     <div className="App">
@@ -109,8 +94,6 @@ function App() {
         </div>
         <div className='songs'>
           <h4>Memory Reboot</h4>
-          <img src={src} alt='heart' id='heart' onClick={HeartHide}></img>
-          {/* <img src='/img/heart_fill.png' alt='heart-filled' id='heart-fill' onClick={heartFillHide}></img> */}
           <button>Remove</button>
         </div>
         {divs.map((div) => div)}
